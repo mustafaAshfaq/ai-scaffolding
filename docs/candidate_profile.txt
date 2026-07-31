@@ -1,0 +1,7 @@
+ I have 15 years of experience in designing and developing enterprise-grade solutions primarily in .NET and C#, Angular and Node. I bring deep technical expertise and proven leadership in building scalable, high quality software systems. My career has spanned domains such as travel technology and healthcare, where I have successfully delivered complex, mission critical applications that improved business efficiency and enhanced user experience.
+I have 10 years of experience in working with MSSQL server with DDL and DML scripting, SSIS.
+I have experience in JavaScript, TypeScript, HTML, and CSS.
+I have experience designing and developing microservices architecture and deployment using Azure DevOps and OpenShift.
+I believe my skills and expertise align perfectly with the requirements of the role.
+Over the course of my career, I have gained extensive experience in designing and developing fullstack applications using C#, ASP.NET Web API, Angular with SQL Server as Database backend, ensuring efficient data flow, seamless user experiences, and robust backend functionality.
+Furthermore, I have hands-on experience in Node.JS for backend development. I have utilized these technologies in the design and development of full stack application projects and deliver end-to-end solutions.
