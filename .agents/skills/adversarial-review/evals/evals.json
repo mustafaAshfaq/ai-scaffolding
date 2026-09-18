@@ -1,0 +1,87 @@
+{
+
+  "skill_name": "adversarial-review",
+
+  "evals": [
+
+    {
+
+      "id": 1,
+
+      "prompt": "Please do an adversarial review of this Python function:\n\n```python\nimport sqlite3\n\ndef get_user(db_path, username):\n    conn = sqlite3.connect(db_path)\n    cursor = conn.cursor()\n    query = f\"SELECT * FROM users WHERE username = '{username}'\"\n    cursor.execute(query)\n    result = cursor.fetchone()\n    conn.close()\n    return result\n\ndef update_balance(db_path, user_id, amount):\n    conn = sqlite3.connect(db_path)\n    cursor = conn.cursor()\n    cursor.execute(f\"UPDATE accounts SET balance = balance + {amount} WHERE user_id = {user_id}\")\n    conn.commit()\n    conn.close()\n```\n\nThis is part of a web application backend that handles user authentication and financial transactions.",
+
+      "expected_output": "Three independent reviews identifying critical SQL injection vulnerabilities and missing error handling, followed by cross-critique, consensus synthesis, and corrected code. All three reviewers should unanimously flag the SQL injection issues.",
+
+      "files": [],
+
+      "assertions": [
+
+        "The final review identifies SQL injection vulnerabilities in both functions",
+
+        "The SQL injection finding is marked as unanimous or majority consensus",
+
+        "The review includes corrected code using parameterized queries",
+
+        "The final output distinguishes between unanimous, majority, and minority findings",
+
+        "Phase 1 spawns three agents with different models (opus, sonnet, codex)"
+
+      ]
+
+    },
+
+    {
+
+      "id": 2,
+
+      "prompt": "Red team this microservices architecture design:\n\nWe're building an e-commerce platform with these services:\n- **Order Service**: Accepts orders, writes to its own Postgres DB, publishes OrderCreated event to Kafka\n- **Inventory Service**: Consumes OrderCreated, reserves stock, publishes StockReserved or StockFailed event\n- **Payment Service**: Consumes StockReserved, charges the card, publishes PaymentSuccess or PaymentFailed\n- **Notification Service**: Consumes PaymentSuccess and PaymentFailed, sends emails\n\nAll services are stateless and horizontally scalable. We deploy on Kubernetes. No saga coordinator — each service just reacts to events.",
+
+      "expected_output": "Three independent architecture reviews surfacing concerns about distributed transaction integrity, failure compensation (what happens when payment fails after stock is reserved?), at-least-once delivery implications, and missing observability. Cross-critique should refine severity assessments. Synthesis should produce majority/unanimous findings about the saga pattern gap and compensation logic.",
+
+      "files": [],
+
+      "assertions": [
+
+        "The review surfaces the missing compensation/rollback logic when payment fails after stock reservation",
+
+        "At least one finding addresses at-least-once delivery and idempotency concerns",
+
+        "The synthesis produces a consensus finding about distributed transaction management",
+
+        "The review includes architectural recommendations, not just problem statements",
+
+        "Minority or contested findings are clearly labeled as such and surfaced separately"
+
+      ]
+
+    },
+
+    {
+
+      "id": 3,
+
+      "prompt": "I want a thorough critique of this analysis:\n\n**Title: Remote Work Increases Developer Productivity**\n\nOur engineering team switched to fully remote work in Q1 2023. We measured productivity using lines of code committed per developer per week. Results:\n- Q4 2022 (in-office): avg 847 lines/week\n- Q1 2023 (remote): avg 1,203 lines/week\n- Q2 2023 (remote): avg 1,156 lines/week\n\nConclusion: Remote work increased developer productivity by ~40%. We recommend making remote work permanent company policy.\n\nNote: Q1 2023 also coincided with us migrating a large legacy codebase to a new framework.",
+
+      "expected_output": "Three independent reviews finding methodological flaws: lines of code as a productivity metric is poor, the concurrent framework migration is an obvious confound, sample size/significance not addressed, survivorship bias possible (developers who left aren't counted), no control group. Cross-critique should validate these findings. Synthesis should produce a clear majority or unanimous verdict that the conclusion is unsupported, with specific recommendations for a better study design.",
+
+      "files": [],
+
+      "assertions": [
+
+        "The review identifies 'lines of code' as a flawed productivity metric",
+
+        "The framework migration confound is flagged as a major methodological issue",
+
+        "The review recommends more rigorous study design or better metrics",
+
+        "The synthesis verdict reflects that the conclusion is not well-supported by the data",
+
+        "The reviewer agreement map shows which flaws each reviewer independently identified"
+
+      ]
+
+    }
+
+  ]
+
+}
